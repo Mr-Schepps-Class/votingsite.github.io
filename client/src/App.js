@@ -4,6 +4,7 @@ import FileUpload from './FileUpload';
 function App() {
     return (
         <div className="App">
+            <h1>Test Title</h1>
             <h1>File Upload Example</h1>
             <FileUpload />
         </div>
