@@ -9,7 +9,7 @@ function App() {
             <h1>Test Title</h1>
             <h1>File Upload Example</h1>
             <FileUpload />
-            <RandomComponent/>
+            <RandomComponent text="wow cool using props amazing splendid spectacular stuff here man"/>
             
         </div>
     );
@@ -22,12 +22,12 @@ function BasicButton() {
     );
   }
 
-  function RandomComponent() {
+  function RandomComponent(props) {
     return (
 
         <div>
             <BasicButton />
-            <p>Amazing component!</p>
+            <p>{props.text}</p>
         </div>
 
     );
