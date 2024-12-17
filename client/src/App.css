@@ -24,13 +24,6 @@
   color: white;
 }
 
-.header-default {
-
-  background-color: #a4c991;
-  padding: 10px 20px;
-  color: white;
-
-}
 
 .App-link {
   color: #61dafb;
@@ -45,7 +38,69 @@
   }
 }
 
+
+/* styles: */
+
+
+
 .button-basic {
   text-align: center;
   color: red;
+}
+
+.header-default {
+
+
+  padding: 0px 0px;
+  color: white;
+
+}
+ul.header-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4E4E4E;
+
+}
+
+li.header-item {
+  display: inline;
+  float: left;
+  margin: 10px 10px;
+}
+
+a.header-link {
+
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  display: block;
+  text-decoration: none;
+
+
+}
+
+a.header-link:hover {
+  background-color: #717171;
+}
+
+#upload-link {
+
+  color: #4E4E4E;
+
+}
+
+#upload-link:hover {
+  background-color: rgba(255, 255, 255, 0);
+
+}
+
+#upload-item {
+
+  background-color: white;
+  float: right;
+  margin: 10px 10px;
+  border-radius: 15px;
+
 }

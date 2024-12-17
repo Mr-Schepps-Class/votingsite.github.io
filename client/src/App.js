@@ -37,11 +37,11 @@ function Header() {
     return (
       <header className="header-default" >
             <nav>
-                <ul>
-                    <li><a href="/">Web Portal</a></li>
-                    <li><a href="/">Gallery</a></li>
-                    <li><a href="/">Login/Signup</a></li>
-                    <li><a href="/">Upload Project</a></li>
+                <ul className='header-list'>
+                    <li className='header-item'><a className='header-link' href="/"><strong>WEB PORTAL</strong></a></li>
+                    <li className='header-item'><a className='header-link' href="/">Gallery</a></li>
+                    <li className='header-item'><a className='header-link' href="/">Login/Signup</a></li>
+                    <li className='header-item' id="upload-item"><a id='upload-link' className='header-link' href="/">Upload Project</a></li>
                 </ul>
             </nav>
       </header>
