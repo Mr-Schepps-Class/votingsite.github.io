@@ -17,8 +17,8 @@ function Home() {
             <div className="App">
                 <title>Web Portal - Home Page</title>
                 <Header/>
-                <h1>Web Portal</h1>
-                <h1>File Upload Example</h1>
+                <Header1 text="Welcome to the Web Portal"></Header1>
+                <Header1 text="Showcase Your Unique Web Project!"></Header1>
                 <FileUpload />
                 <RandomComponent text="wow cool using props amazing splendid spectacular stuff here man"/>
 
@@ -27,10 +27,16 @@ function Home() {
     );
 }
 
+function Header1(props) {
+    return (
+        <h1 className="basic-text">{props.text}</h1>
+    );
+  }
+
 
 function BasicButton() {
     return (
-      <button className="button-basic" >Basic Button Text</button>
+      <button className="button-basic" ><p className="basic-text">Basic Button Text</p></button>
     );
   }
 
@@ -54,7 +60,7 @@ function Header() {
 
         <div>
             <BasicButton />
-            <p>{props.text}</p>
+            <p className='basic-text'> {props.text}</p>
         </div>
 
     );
