@@ -45,10 +45,12 @@ function Header() {
       <header className="header-default" >
             <nav>
                 <ul className='header-list'>
-                    <li className='header-item'><a className='header-link' href="/"><strong>WEB PORTAL</strong></a></li>
-                    <li className='header-item'><a className='header-link' href="/">Gallery</a></li>
-                    <li className='header-item'><a className='header-link' href="/">Login/Signup</a></li>
+                    <li className='header-item' id="header-logo"><a className='header-link' id="link-logo" href="/">WEB PORTAL</a></li>
                     <li className='header-item' id="upload-item"><a id='upload-link' className='header-link' href="/">Upload Project</a></li>
+                    <li className='header-item'><a className='header-link' href="/" >Login/Signup</a></li>
+                    <li className='header-item'><a className='header-link' href="/" >Gallery</a></li>
+
+
                 </ul>
             </nav>
       </header>
