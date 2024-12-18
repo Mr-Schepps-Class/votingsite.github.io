@@ -12,17 +12,18 @@ function App() {
 }
 function Home() {
     return (
+        <>
 
+            <div className="App">
+                <title>Web Portal - Home Page</title>
+                <Header/>
+                <h1>Web Portal</h1>
+                <h1>File Upload Example</h1>
+                <FileUpload />
+                <RandomComponent text="wow cool using props amazing splendid spectacular stuff here man"/>
 
-        <div className="App">
-            <title>Web Portal - Home Page</title>
-            <Header/>
-            <h1>Web Portal</h1>
-            <h1>File Upload Example</h1>
-            <FileUpload />
-            <RandomComponent text="wow cool using props amazing splendid spectacular stuff here man"/>
-
-        </div>
+            </div>
+        </>
     );
 }
 
