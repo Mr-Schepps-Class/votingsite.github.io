@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS webportal.websites (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    website VARCHAR(255) NOT NULL
+);
