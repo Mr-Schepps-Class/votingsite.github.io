@@ -16,10 +16,11 @@ function Home() {
 
             <div className="App">
                 <title>Web Portal - Home Page</title>
-                <Header/>
+                <NavBar/>
                 <Header1 text="Welcome to the Web Portal"></Header1>
                 <Header1 text="Showcase Your Unique Web Project!"></Header1>
                 <FileUpload />
+                <br />
                 <RandomComponent text="wow cool using props amazing splendid spectacular stuff here man"/>
 
             </div>
@@ -40,7 +41,7 @@ function BasicButton() {
     );
   }
 
-function Header() {
+function NavBar() {
     return (
       <header className="header-default" >
             <nav>

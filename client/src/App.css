@@ -51,7 +51,13 @@
 
 .button-basic {
   text-align: center;
-  color: red;
+  color: #4E4E4E;
+  border-radius: 50px;
+  background-color: #C6DDE6;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .header-default {
@@ -93,6 +99,7 @@ a.header-link {
   display: block;
   text-decoration: none;
   font-size: large;
+  border-radius: 15px;
 
 
 }
@@ -118,6 +125,7 @@ a.header-link:hover {
 #upload-link {
 
   color: #4E4E4E;
+  font-weight: 700;
 
 }
 

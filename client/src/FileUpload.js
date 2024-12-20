@@ -35,7 +35,7 @@ const FileUpload = () => {
         <div>
             <form onSubmit={handleFileUpload}>
                 <input type="file" onChange={handleFileChange} />
-                <button type="submit">Upload</button>
+                <button className="button-basic" type="submit">Upload</button>
             </form>
             {message && <p>{message}</p>}
         </div>
