@@ -4,7 +4,8 @@ const LoginSignup = () => {
   return (
     <>
       <title>Web Portal - Login or Signup</title>
-      <div>Login/Signup</div>
+      <h1 className="heavy-text">Login | Signup</h1>
+      <div></div>
     </>
   );
 };

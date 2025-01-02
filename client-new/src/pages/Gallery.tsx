@@ -4,7 +4,9 @@ const Gallery = () => {
   return (
     <>
       <title>Web Portal - Gallery</title>
-      <div>Gallery</div>
+
+      <h1 className="heavy-text">Project Gallery</h1>
+      <div></div>
     </>
   );
 };
