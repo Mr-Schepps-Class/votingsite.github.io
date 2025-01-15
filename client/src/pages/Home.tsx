@@ -12,7 +12,7 @@ const Home = () => {
       today.getUTCDate(),
       today.getUTCHours(),
     ];
-    const reset = new Date(`4, 10, 2025 20:59:59 UTC`);
+    const reset = new Date(`2, 10, 2025 20:59:59 UTC`);
     const resetArray = [
       reset.getUTCMonth(),
       reset.getUTCDate(),
