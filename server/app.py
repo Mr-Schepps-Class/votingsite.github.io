@@ -1,13 +1,20 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import os
+from flask_session import Session
+from flask_bcrypt import Bcrypt
+from config import ApplicationConfig
 
+#configuring app, cors, hashing, and making sure the session doesnt reset between queries
 app = Flask(__name__)
-CORS(app)
+app.config.from_object(ApplicationConfig)
+app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 
-UPLOAD_FOLDER = './uploads'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+CORS(app, supports_credentials=True)
+bcrypt = Bcrypt(app)
+
+server_session = Session(app)
+
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
