@@ -6,6 +6,7 @@ const Gallery = () => {
       <title>Web Portal - Gallery</title>
 
       <h1 className="heavy-text">Project Gallery</h1>
+
       <div></div>
     </>
   );
