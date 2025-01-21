@@ -5,7 +5,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import Gallery from "./pages/Gallery";
-import LoginSignup from "./pages/LoginSignup";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/upload-project" element={<Upload />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/login-signup" element={<LoginSignup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </main>
     </>
