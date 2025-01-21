@@ -4,29 +4,65 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <header className="header-default">
-      <nav>
-        <ul className="header-list">
-          <li className="header-item" id="header-logo">
-            <Link className="header-link" id="link-logo" to="/">
-              WEB PORTAL
-            </Link>
-          </li>
-          <li className="header-item" id="upload-item">
-            <Link id="upload-link" className="header-link" to="/upload-project">
-              Upload Project
-            </Link>
-          </li>
-          <li className="header-item">
-            <Link className="header-link" to="/login-signup">
-              Login/Signup
-            </Link>
-          </li>
-          <li className="header-item">
-            <Link className="header-link" to="/gallery">
-              Gallery
-            </Link>
-          </li>
-        </ul>
+      <nav
+        className="navbar navbar-expand-lg header-list py-3"
+        data-bs-theme="dark"
+      >
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            WEB PORTAL
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/gallery">
+                  Gallery
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login-signup">
+                  Login/Signup
+                </Link>
+              </li>
+            </ul>
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link to="/upload-project">
+                  <button className="btn btn-outline-light me-2" type="button">
+                    Upload Project
+                  </button>
+                </Link>
+              </li>
+            </ul>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2 "
+                type="search"
+                placeholder="Search For a Site"
+                aria-label="Search For a Site"
+              ></input>
+              <button className="btn btn-outline-info" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
       </nav>
     </header>
   );
