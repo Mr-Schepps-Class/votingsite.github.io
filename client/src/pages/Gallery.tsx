@@ -1,4 +1,5 @@
 import React from "react";
+import SiteCard from "../components/SiteCard";
 
 const Gallery = () => {
   return (
@@ -7,7 +8,16 @@ const Gallery = () => {
 
       <h1 className="heavy-text">Project Gallery</h1>
 
-      <div></div>
+      <div>
+        <SiteCard websiteName="WOW AMAZING WEBSITE" rating={8.8}>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </SiteCard>
+      </div>
     </>
   );
 };
