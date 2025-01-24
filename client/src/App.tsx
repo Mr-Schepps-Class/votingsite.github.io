@@ -7,6 +7,7 @@ import Upload from "./pages/Upload";
 import Gallery from "./pages/Gallery";
 import LoginSignup from "./pages/LoginSignup";
 import NavBar from "./components/NavBar";
+import RegisterPage from "./components/Register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/upload-project" element={<Upload />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/login-signup" element={<LoginSignup />} />
+          <Route path = "/register" element = {<RegisterPage/>} />
         </Routes>
       </main>
     </>
