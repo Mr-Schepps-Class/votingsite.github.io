@@ -2,31 +2,31 @@ import httpClient from "../httpClient";
 import React from "react"
 
 
-function RegisterPage(){
+function LoginPage(){
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
-    const registerUser = async () => {
-        try {
-            const resp = await httpClient.post("http://127.0.0.1:5000/register", {
+    const logInUser = async() => {
+
+        try{
+            const resp = await httpClient.post("http://127.0.0.1:5000/login", {
                 email,
                 password,
             });
 
-        window.location.href = "/";
+            window.location.href = "/";
         } 
         catch (e : any) {
             //console.log(e.message);
 
             //kinda hacky solution here
-        
-            if(e.message == "Request failed with status code 409"){
-                alert("This user already exists");
+            if(e.message == "Request failed with status code 401"){
+                alert("Invalid Credentials");
             }
             
         }
     };
-        
+
     return(
         <div>
             <form>
@@ -48,13 +48,12 @@ function RegisterPage(){
                     />
                 </div>
 
-                <button type = "button" onClick={() => registerUser()}>
+                <button type = "button" onClick={() => logInUser()}>
                     Submit
                 </button>
             </form>
         </div>
     )
-
 }
 
-export default RegisterPage;
+export default LoginPage;

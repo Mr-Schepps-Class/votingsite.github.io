@@ -45,6 +45,7 @@ const Home = () => {
   return (
     <>
       <title>Web Portal - Home Page</title>
+     
       <h1 className="heavy-text">Welcome to the Web Portal</h1>
       <h3 className="heavy-text">Showcase Your Unique Web Project!</h3>
 

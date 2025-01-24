@@ -49,7 +49,7 @@ def register_user():
     
     hshpass = bcrypt.generate_password_hash(password)
 
-    nuser = User(email = email, password =hshpass, voted = set())
+    nuser = User(email = email, password =hshpass)
 
     db.session.add(nuser)
     db.session.commit()

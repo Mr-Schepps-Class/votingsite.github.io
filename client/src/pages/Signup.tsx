@@ -1,13 +1,8 @@
 import React from "react";
+import RegisterPage from "../components/Register";
 
 const Signup = () => {
-  return (
-    <>
-      <title>Web Portal - Signup</title>
-      <h1 className="heavy-text">Signup</h1>
-      <div></div>
-    </>
-  );
+  return <RegisterPage></RegisterPage>
 };
 
 export default Signup;
