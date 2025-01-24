@@ -180,3 +180,6 @@ body {
   padding: 5vh 0;
   width: 30vw;
 }
+html {
+  overflow-x: hidden;
+}

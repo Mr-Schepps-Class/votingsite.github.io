@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <header className="header-default">
       <nav
-        className="navbar navbar-expand-lg header-list py-3"
+        className="navbar navbar-expand-lg header-list py-3 ps-2 mb-4"
         data-bs-theme="dark"
       >
         <div className="container-fluid">
@@ -36,8 +36,13 @@ const NavBar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login-signup">
-                  Login/Signup
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/signup">
+                  Signup
                 </Link>
               </li>
             </ul>
