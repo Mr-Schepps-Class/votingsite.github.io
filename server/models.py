@@ -10,7 +10,13 @@ class User(db.Model):
     email = db.Column(db.String, unique = True)
     password = db.Column(db.String(30))
 
-
+class Websites(db.Model):
+    __tablename__ = "websites"
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String)
+    url = db.Column(db.String, unique = True)
+    userId = db.Column(db.Integer, db.ForeignKey("User.id"), nullable = False)
+    
 
 
 
