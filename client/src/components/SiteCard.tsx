@@ -12,6 +12,7 @@ const SiteCard = ({ children, websiteName, rating }: SiteCardProps) => {
     <div>
       <div
         className="card border-info mb-3 text-bg-dark"
+        id="my-card-color"
         style={{ maxWidth: "18rem" }}
       >
         <div className="card-body">
