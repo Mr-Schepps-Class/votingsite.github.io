@@ -1,7 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import httpClient from "../httpClient";
 
 const NavBar = () => {
+  const [user, setUser] = React.useState("");
+  React.useEffect(() => {
+
+    
+    
+    (async () => {
+      try {
+        const resp = await httpClient.get("http://127.0.0.1:5000/@me");
+        setUser(resp.data);
+      } 
+      catch (error) {
+        console.log("Not authenticated");
+        setUser("none");
+      }
+      })();
+  }, []);
+
+
   return (
     <header className="header-default">
       <nav
@@ -35,6 +54,8 @@ const NavBar = () => {
                   Gallery
                 </Link>
               </li>
+
+              {user != "none" ? ()}
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
                   Login

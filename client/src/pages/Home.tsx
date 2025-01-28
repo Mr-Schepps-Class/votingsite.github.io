@@ -2,8 +2,12 @@ import React from "react";
 import FeaturedSite from "../components/FeaturedSite";
 import AverageRating from "../components/AverageRating";
 import websitephoto from "../assets/websitephoto.png";
+import httpClient from "../httpClient";
 
 const Home = () => {
+
+
+
   let timeDifference: any = [];
   function getResetTime() {
     const today = new Date();
@@ -41,6 +45,8 @@ const Home = () => {
     timeDifference[0] == 0
       ? `${timeDifference[1]} Days`
       : `${timeDifference[0]} Months, ${timeDifference[1]} Days`;
+
+
 
   return (
     <>

@@ -101,8 +101,7 @@ def get_current_user():
     user = User.query.filter_by(id=user_id).first()
     return jsonify({
         "id": user.id,
-        "email": user.email,
-        "voted" : user.voted
+        "email": user.email
     }) 
 if __name__ == '__main__':
     app.run(debug=True)
