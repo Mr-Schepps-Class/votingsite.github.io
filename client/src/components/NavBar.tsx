@@ -4,7 +4,7 @@ import httpClient from "../httpClient";
 
 const NavBar = () => {
   const [user, setUser] = React.useState("");
-  React.useEffect(() => {
+    React.useEffect(() => {
 
     
     
@@ -19,6 +19,14 @@ const NavBar = () => {
       }
       })();
   }, []);
+
+  const logoutUser = async () => {
+    
+    await httpClient.post("http://127.0.0.1:5000/logout");
+    window.location.href = "/";
+  };
+
+
 
 
   return (
@@ -55,17 +63,26 @@ const NavBar = () => {
                 </Link>
               </li>
 
-              {user != "none" ? ()}
+             
               <li className="nav-item">
+              {user != "none" ? (
+                <button onClick={logoutUser}>Logout</button>
+              ) : (
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
+              )}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/signup">
-                  Signup
-                </Link>
+                {user != "none" ? (
+                  <div></div>
+                ):(
+                  <Link className="nav-link" to="/signup">
+                   Signup
+                  </Link>
+                )}
               </li>
+              
             </ul>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">

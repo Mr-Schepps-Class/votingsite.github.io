@@ -84,6 +84,7 @@ def login_user():
         "email" : user.email
     })
 
+@app.route("/logout", methods=["POST", 'GET'])
 def logout_user():
     session.pop("user_id")
     return "200"
