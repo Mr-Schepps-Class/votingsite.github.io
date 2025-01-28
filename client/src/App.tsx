@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -19,9 +19,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/upload-project" element={<Upload />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path = "/signup" element = {<Signup/>} />
-          <Route path = "/login" element = {<Login />} />
-
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
     </>

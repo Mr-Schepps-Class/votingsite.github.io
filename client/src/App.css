@@ -183,3 +183,9 @@ body {
 html {
   overflow-x: hidden;
 }
+
+#my-card-color > div {
+  background-color: #b3ccd7;
+  border: solid #000000;
+  border-width: 10px;
+}

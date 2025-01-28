@@ -17,6 +17,30 @@ const Gallery = () => {
           <br />
           <br />
         </SiteCard>
+        <SiteCard websiteName="Cool WEbsite 2!" rating={9.8}>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </SiteCard>
+        <SiteCard websiteName="GOOD WEBSITE" rating={8.8}>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </SiteCard>
+        <SiteCard websiteName="FANTASTIC WEBSITE!" rating={9.8}>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </SiteCard>
       </div>
     </>
   );
