@@ -82,6 +82,16 @@ const NavBar = () => {
                   </Link>
                 )}
               </li>
+
+            
+              {user != 'none' ? 
+              (<h1>{user.email}</h1>
+              ) : 
+              (<div></div>
+              
+              )}
+   
+            
               
             </ul>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -93,6 +103,9 @@ const NavBar = () => {
                 </Link>
               </li>
             </ul>
+
+            
+            
             <form className="d-flex" role="search">
               <input
                 className="form-control me-2 "

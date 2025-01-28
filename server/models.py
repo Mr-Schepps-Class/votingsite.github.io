@@ -10,7 +10,10 @@ class User(db.Model):
     email = db.Column(db.String, unique = True)
     password = db.Column(db.String(30))
 
+class Votes(db.Model):
+    __tablename__ = "votes"
 
+    
 
 
 
