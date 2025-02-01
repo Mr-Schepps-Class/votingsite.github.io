@@ -4,30 +4,22 @@ import httpClient from "../httpClient";
 
 const NavBar = () => {
   const [user, setUser] = React.useState("");
-    React.useEffect(() => {
-
-    
-    
+  React.useEffect(() => {
     (async () => {
       try {
         const resp = await httpClient.get("http://127.0.0.1:5000/@me");
         setUser(resp.data);
-      } 
-      catch (error) {
+      } catch (error) {
         console.log("Not authenticated");
         setUser("none");
       }
-      })();
+    })();
   }, []);
 
   const logoutUser = async () => {
-    
     await httpClient.post("http://127.0.0.1:5000/logout");
     window.location.href = "/";
   };
-
-
-
 
   return (
     <header className="header-default">
@@ -63,36 +55,26 @@ const NavBar = () => {
                 </Link>
               </li>
 
-             
               <li className="nav-item">
-              {user != "none" ? (
-                <button onClick={logoutUser}>Logout</button>
-              ) : (
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              )}
+                {user != "none" ? (
+                  <button onClick={logoutUser}>Logout</button>
+                ) : (
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
+                )}
               </li>
               <li className="nav-item">
                 {user != "none" ? (
                   <div></div>
-                ):(
+                ) : (
                   <Link className="nav-link" to="/signup">
-                   Signup
+                    Signup
                   </Link>
                 )}
               </li>
 
-            
-              {user != 'none' ? 
-              (<h1>{user.email}</h1>
-              ) : 
-              (<div></div>
-              
-              )}
-   
-            
-              
+              {user != "none" ? <h1>{user.email}</h1> : <div></div>}
             </ul>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -104,8 +86,6 @@ const NavBar = () => {
               </li>
             </ul>
 
-            
-            
             <form className="d-flex" role="search">
               <input
                 className="form-control me-2 "

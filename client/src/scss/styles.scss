@@ -1,3 +1,16 @@
+@import "bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "OpenSans";
+  src: local("OpenSans"), url("../fonts/OpenSansDynamic.ttf") format("opentype");
+  font-weight: normal;
+}
+$font-family-base: "OpenSans";
+
+body {
+  font-family: "OpenSans";
+}
+
 .main-content {
   text-align: center;
 }
@@ -38,12 +51,6 @@
 }
 
 /* styles: */
-
-@font-face {
-  font-family: "OpenSans";
-  src: local("OpenSans"), url("./fonts/OpenSansDynamic.ttf") format("opentype");
-  font-weight: normal;
-}
 
 .button-basic {
   text-align: center;
@@ -109,11 +116,6 @@ li.header-item {
   background-color: white;
   margin: 10px 20px;
   border-radius: 15px;
-}
-
-body {
-  font-family: "OpenSans";
-  background-color: #dae8ee;
 }
 
 .basic-text {
@@ -184,8 +186,20 @@ html {
   overflow-x: hidden;
 }
 
-#my-card-color > div {
-  background-color: #b3ccd7;
-  border: solid #000000;
-  border-width: 10px;
+$CARDcardcolor: #b3ccd7;
+$CARDborderwidth: 5px;
+$CARDbordercolor: #c6dde6;
+$CARDborderradius: 50px;
+
+#my-card-color {
+  background-color: $CARDcardcolor;
+  border-width: $CARDborderwidth;
+  border-color: $CARDbordercolor;
+  border-radius: 50px;
 }
+
+#my-card-button {
+}
+
+$body-bg: #dae8ee;
+@import "bootstrap";
