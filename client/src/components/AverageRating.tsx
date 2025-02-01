@@ -10,7 +10,7 @@ const AverageRating = ({ rating }: RatingProps) => {
   const lightness = "80%";
 
   const hslColor = `hsl(${hue} ${saturation} ${lightness})`;
-  console.log(hslColor);
+
   return (
     <div>
       <div className="rating-outer-circle">

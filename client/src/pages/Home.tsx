@@ -5,9 +5,6 @@ import websitephoto from "../assets/websitephoto.png";
 import httpClient from "../httpClient";
 
 const Home = () => {
-
-
-
   let timeDifference: any = [];
   function getResetTime() {
     const today = new Date();
@@ -46,12 +43,10 @@ const Home = () => {
       ? `${timeDifference[1]} Days`
       : `${timeDifference[0]} Months, ${timeDifference[1]} Days`;
 
-
-
   return (
     <>
       <title>Web Portal - Home Page</title>
-     
+
       <h1 className="heavy-text">Welcome to the Web Portal</h1>
       <h3 className="heavy-text">Showcase Your Unique Web Project!</h3>
 

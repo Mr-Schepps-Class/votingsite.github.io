@@ -3,9 +3,11 @@
 @font-face {
   font-family: "OpenSans";
   src: local("OpenSans"), url("../fonts/OpenSansDynamic.ttf") format("opentype");
-  font-weight: normal;
 }
+
 $font-family-base: "OpenSans";
+
+$FONTCOLOR: #4e4e4e;
 
 body {
   font-family: "OpenSans";
@@ -54,7 +56,7 @@ body {
 
 .button-basic {
   text-align: center;
-  color: #4e4e4e;
+  color: $FONTCOLOR;
   border-radius: 50px;
   background-color: #c6dde6;
   font-weight: 600;
@@ -104,7 +106,7 @@ li.header-item {
 }
 
 #upload-link {
-  color: #4e4e4e;
+  color: $FONTCOLOR;
   font-weight: 700;
 }
 
@@ -119,7 +121,7 @@ li.header-item {
 }
 
 .basic-text {
-  color: #4e4e4e;
+  color: $FONTCOLOR;
   font-weight: 300;
 }
 
@@ -144,8 +146,8 @@ li.header-item {
   margin: 0;
 }
 .heavy-text {
-  font-weight: 900;
-  color: #4e4e4e;
+  font-weight: 400;
+  color: $FONTCOLOR;
 }
 .rating-outer-circle {
   background-color: #c6dde6;
@@ -169,8 +171,8 @@ li.header-item {
   align-items: center;
 }
 .rating-text {
-  font-weight: 900;
-  color: #4e4e4e;
+  font-weight: 500;
+  color: $FONTCOLOR;
   font-size: 3vh;
 }
 .featured-container {
@@ -191,14 +193,24 @@ $CARDborderwidth: 5px;
 $CARDbordercolor: #c6dde6;
 $CARDborderradius: 50px;
 
+$CARDbtnhovercolor: #bfd5de;
+
 #my-card-color {
   background-color: $CARDcardcolor;
   border-width: $CARDborderwidth;
   border-color: $CARDbordercolor;
-  border-radius: 50px;
+  border-radius: $CARDborderradius;
+  color: $FONTCOLOR;
 }
 
 #my-card-button {
+  background-color: $CARDbordercolor;
+  border-radius: $CARDborderradius;
+  color: $FONTCOLOR;
+  border: none;
+}
+#my-card-button:hover {
+  background-color: $CARDbtnhovercolor;
 }
 
 $body-bg: #dae8ee;
