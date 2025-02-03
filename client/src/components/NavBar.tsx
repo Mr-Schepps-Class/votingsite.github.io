@@ -57,7 +57,13 @@ const NavBar = () => {
 
               <li className="nav-item">
                 {user != "none" ? (
-                  <button onClick={logoutUser}>Logout</button>
+                  <button
+                    onClick={logoutUser}
+                    className="btn btn-outline-light me-2"
+                    type="button"
+                  >
+                    Logout
+                  </button>
                 ) : (
                   <Link className="nav-link" to="/login">
                     Login
@@ -74,7 +80,11 @@ const NavBar = () => {
                 )}
               </li>
 
-              {user != "none" ? <h1>{user.email}</h1> : <div></div>}
+              {user != "none" ? (
+                <li className="nav-item">{user.email}</li>
+              ) : (
+                <div></div>
+              )}
             </ul>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">

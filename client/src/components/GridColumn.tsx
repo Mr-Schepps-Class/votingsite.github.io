@@ -1,34 +1,40 @@
 import React from "react";
 import SiteCard from "./SiteCard";
-import { useState, useEffect } from "react";
 import DetectMobile from "../components/DetectMobile";
 
-const GridColumn = () => {
+interface GridColumnProps {
+  totalSites: number;
+}
+
+const GridColumn = ({ totalSites }: GridColumnProps) => {
   const colNum = DetectMobile() ? 1 : 3;
+  const rowNum = Math.ceil(totalSites / colNum);
 
-  const [numElements, setNumElements] = useState(colNum);
+  return (
+    <>
+      {Array.from({ length: rowNum }).map((_, rowIndex) => (
+        <div className="row" key={rowIndex}>
+          {Array.from({ length: colNum }).map((_, colIndex) => {
+            const siteIndex = rowIndex * colNum + colIndex;
+            if (siteIndex >= totalSites) return null; // Prevent extra items
 
-  useEffect(() => {
-    setNumElements(colNum);
-  }, [colNum]);
-
-  const elements = Array.from(
-    { length: numElements },
-    (_, i) => `Item ${i + 1}`
+            return (
+              <div
+                key={siteIndex}
+                className={`col-${12 / colNum} d-flex justify-content-center`}
+              >
+                <SiteCard
+                  websiteName={`WOW AMAZING WEBSITE ${siteIndex + 1}`}
+                  rating={84} // Example rating
+                  siteGithub="https://pages.github.com/"
+                />
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </>
   );
-
-  return elements.map((_, index) => (
-    <div
-      key={index}
-      className={`col-${12 / colNum} d-flex justify-content-center`}
-    >
-      <SiteCard
-        websiteName="WOW AMAZING WEBSITE"
-        rating={84}
-        siteGithub=" https://pages.github.com/"
-      />
-    </div>
-  ));
 };
 
 export default GridColumn;
