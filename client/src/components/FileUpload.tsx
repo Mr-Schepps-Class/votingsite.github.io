@@ -1,47 +1,53 @@
 import React, { useState } from "react";
 import axios from "axios";
+import httpClient from "../httpClient";
 
 const FileUpload = () => {
-  const [file, setFile] = useState(null);
+  const [url, setUrl] = useState("");
   const [message, setMessage] = useState("");
+  const [user, setUser] = React.useState("");
 
-  const handleFileChange = (e: any) => {
-    setFile(e.target.files[0]);
+  const email = user.email;
+
+  React.useEffect(() => {
+      (async () => {
+        try {
+          const resp = await httpClient.get("http://127.0.0.1:5000/@me");
+          setUser(resp.data);
+        } catch (error) {
+          console.log("Not authenticated");
+          setUser("none");
+        }
+      })();
+    }, []);
+
+  const handleUrlChange = (e) => {
+    setUrl(e.target.value);
   };
 
-  const handleFileUpload = async (e: any) => {
+  const handleUrlUpload = async (e) => {
     e.preventDefault();
-    if (!file) {
-      setMessage("Please select a file to upload");
+    if (!url) {
+      setMessage("Please enter a URL to upload");
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await httpClient.post("http://127.0.0.1:5000/upload", {
+        email,
+        url
+      });
       setMessage(response.data.message);
-    } catch (error: any) {
-      setMessage(error.response?.data?.error || "File upload failed");
+    } catch (error) {
+      setMessage(error.response?.data?.error || "URL upload failed");
     }
   };
 
   return (
     <div>
-      <form onSubmit={handleFileUpload}>
-        <input type="file" onChange={handleFileChange} />
-        <button className="button-basic" type="submit">
-          Upload
-        </button>
+      <form onSubmit={handleUrlUpload}>
+        <input type="text" value={url} onChange={handleUrlChange} placeholder="Enter file URL" />
+        <button type="submit">Upload</button>
       </form>
       {message && <p>{message}</p>}
     </div>

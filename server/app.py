@@ -5,6 +5,7 @@ from flask_session import Session
 from flask_bcrypt import Bcrypt
 from config import ApplicationConfig
 from models import db, User
+import requests
 
 #configuring app, cors, hashing, and making sure the session doesnt reset between queries
 app = Flask(__name__)
@@ -25,17 +26,17 @@ server_session = Session(app)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    if 'file' not in request.files:
-        return jsonify({"error": "No file part"}), 400
-    
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({"error": "No file selected"}), 400
-    
+    email = request.json['email']
+    url = request.json['url']
+    user = User.query.filter_by(email = email).first()
 
-    file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-    file.save(file_path)
-    return jsonify({"message": "File uploaded successfully", "filename": file.filename}), 200
+    if not url:
+        return jsonify({"error": "No URL provided"}), 400
+
+
+    return jsonify({"message": "File downloaded successfully"}), 200
+
+  
 
 @app.route("/register", methods = ["POST"])
 def register_user():
