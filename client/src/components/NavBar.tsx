@@ -81,7 +81,7 @@ const NavBar = () => {
               </li>
 
               {user != "none" ? (
-                <li className="nav-item">{user.email}</li>
+                <li className="nav-item nav-link">{user.email}</li>
               ) : (
                 <div></div>
               )}
