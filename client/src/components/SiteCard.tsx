@@ -10,7 +10,7 @@ interface SiteCardProps {
 
 const SiteCard = ({ siteGithub, websiteName, rating }: SiteCardProps) => {
   return (
-    <div className="card mb-3 w-100 mx-3" id="my-card-color">
+    <div className="card mb-3 w-100 mx-3 my-4" id="my-card-color">
       <div className="card-body">
         <AverageRating rating={rating} />
         <a
