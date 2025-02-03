@@ -1,25 +1,27 @@
 import React from "react";
 import { ReactNode } from "react";
+import AverageRating from "./AverageRating";
 
 interface SiteCardProps {
-  children: ReactNode;
+  siteGithub: string;
   websiteName: string;
   rating: number;
 }
 
-const SiteCard = ({ children, websiteName, rating }: SiteCardProps) => {
+const SiteCard = ({ siteGithub, websiteName, rating }: SiteCardProps) => {
   return (
-    <div>
-      <div
-        className="card border-info mb-3 text-bg-dark"
-        id="my-card-color"
-        style={{ maxWidth: "18rem" }}
-      >
-        <div className="card-body">
-          <a href="#" className="btn btn-primary">
-            Explore
-          </a>
-          <div className="card-img-top">{children}</div>
+    <div className="card mb-3 w-100 mx-3 my-4" id="my-card-color">
+      <div className="card-body">
+        <AverageRating rating={rating} />
+        <a
+          href="#"
+          className="btn btn-primary w-75 py-3 fs-4 fw-bolder"
+          id="my-card-button"
+        >
+          explore
+        </a>
+        <iframe src={siteGithub} className="card-img-top px-3 py-4"></iframe>
+        <div>
           <h5 className="card-title ">{websiteName}</h5>
         </div>
       </div>
