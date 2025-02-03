@@ -56,15 +56,6 @@ const NavBar = () => {
               </li>
 
               <li className="nav-item">
-              {user == "none"  ? (
-                <Link className="nav-link" to="/login">
-                Login
-                </Link>
-              ) : (
-                
-
-                <button onClick={logoutUser}>Logout</button>
-              )}
                 {user != "none" ? (
                   <button onClick={logoutUser}>Logout</button>
                 ) : (
