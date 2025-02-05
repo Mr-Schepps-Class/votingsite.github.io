@@ -4,8 +4,12 @@ from flask_cors import CORS
 from flask_session import Session
 from flask_bcrypt import Bcrypt
 from config import ApplicationConfig
-from models import db, User
+from models import db, User, Website
 import requests
+import pandas as pd
+import sqlalchemy
+
+
 
 #configuring app, cors, hashing, and making sure the session doesnt reset between queries
 app = Flask(__name__)
@@ -28,10 +32,28 @@ server_session = Session(app)
 def upload_file():
     email = request.json['email']
     url = request.json['url']
+    
     user = User.query.filter_by(email = email).first()
 
     if not url:
         return jsonify({"error": "No URL provided"}), 400
+    
+    if(Website.query.filter_by(userId = user.id).first() is None):
+        nsite = Website(name = "tmp", url = url, userId = user.id)
+        db.session.add(nsite)
+    else:
+        site = Website.query.filter_by(userId = user.id).first()
+
+        site.name = "newTmp"
+        site.url = url
+    
+    db.session.commit()
+
+    websites = Website.query.all()
+    for site in websites:
+        print(site.id, site.name, site.url, site.userId)
+    
+    
 
 
     return jsonify({"message": "File downloaded successfully"}), 200
