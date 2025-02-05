@@ -10,22 +10,24 @@ interface SiteCardProps {
 
 const SiteCard = ({ siteGithub, websiteName, rating }: SiteCardProps) => {
   return (
-    <div className="card mb-3 w-100 mx-3 my-4" id="my-card-color">
-      <div className="card-body">
-        <AverageRating rating={rating} />
-        <a
-          href="#"
-          className="btn btn-primary w-75 py-3 fs-4 fw-bolder"
-          id="my-card-button"
-        >
-          explore
-        </a>
-        <iframe src={siteGithub} className="card-img-top px-3 py-4"></iframe>
-        <div>
-          <h5 className="card-title ">{websiteName}</h5>
+    <>
+      <div className="card mb-3 w-100 mx-3 my-4" id="my-card-color">
+        <div className="card-body">
+          <AverageRating rating={rating} />
+          <a
+            href="#"
+            className="btn btn-primary w-75 py-3 fs-4 fw-bolder"
+            id="my-card-button"
+          >
+            explore
+          </a>
+          <iframe src={siteGithub} className="card-img-top px-3 py-4"></iframe>
+          <div>
+            <h5 className="card-title ">{websiteName}</h5>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

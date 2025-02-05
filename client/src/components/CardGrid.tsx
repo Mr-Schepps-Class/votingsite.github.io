@@ -6,7 +6,7 @@ import GridColumn from "./GridColumn";
 const CardGrid = () => {
   return (
     <div className="container text-center">
-      <GridColumn totalSites={30} />
+      <GridColumn totalSites={29} />
     </div>
   );
 };

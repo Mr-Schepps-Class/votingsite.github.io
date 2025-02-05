@@ -56,14 +56,13 @@ const Home = () => {
         websiteName="Amazing Site"
         websiteCreator="Bob Bob"
         rating={89}
+        link="https://pages.github.com/"
         timeRemaining={
           timeDifference[2] == 0
             ? timeDiffConditional
             : timeDiffConditionalHours
         }
-      >
-        <h1 className="heavy-text nomarg">WEBSITE HERE</h1>
-      </FeaturedSite>
+      ></FeaturedSite>
     </>
   );
 };
