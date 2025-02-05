@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import AverageRating from "./AverageRating";
 
 interface FeaturedSiteProps {
-  children: ReactNode;
+  link: string;
   websiteName: string;
   websiteCreator: string;
   rating: number;
@@ -10,7 +10,7 @@ interface FeaturedSiteProps {
 }
 
 const FeaturedSite = ({
-  children,
+  link,
   websiteName,
   websiteCreator,
   rating,
@@ -22,7 +22,10 @@ const FeaturedSite = ({
       <p className="basic-text">{`Resets in ${timeRemaining}`}</p>
       <div className="featured-site">
         <div className="featured-container">
-          <div className="featured-website">{children}</div>
+          <div className="featured-website">
+            {<iframe id="myIframe" width="100%" src={link}></iframe>}
+          </div>
+
           <AverageRating rating={rating} />
         </div>
 
