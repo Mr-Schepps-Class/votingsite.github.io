@@ -2,6 +2,9 @@ import React from "react";
 import { ReactNode } from "react";
 import AverageRating from "./AverageRating";
 import { useEffect, useState } from "react";
+import html2canvas from 'html2canvas';
+
+
 
 interface SiteCardProps {
   siteGithub: string;
@@ -10,38 +13,18 @@ interface SiteCardProps {
 }
 
 const SiteCard = ({ siteGithub, websiteName, rating }: SiteCardProps) => {
-  const [image, setImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const URL = `https://api.screenshotone.com/take?url=${encodeURIComponent(
-    siteGithub
-  )}&access_key=ggE1pJToAA54MA`;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const response = await fetch(URL);
-
-        if (!response.ok) {
-          throw new Error("Failure to fetch screenshot! TRY AGAIN!");
-        }
-
-        const blob = await response.blob();
-        const imageUrl = window.URL.createObjectURL(blob);
-        setImage(imageUrl);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [siteGithub]);
+ 
+  const screenShot = async () => {
+    const iframe = document.getElementsByTagName('iframe');
+    const screen = iframe[0]?.contentDocument?.body;
+  
+    html2canvas(screen)
+      .then((canvas) => {
+        const base64image = canvas.toDataURL('image/png');
+  
+       // Do something with the image
+    });
+  }
 
   return (
     <>
@@ -56,19 +39,9 @@ const SiteCard = ({ siteGithub, websiteName, rating }: SiteCardProps) => {
             explore
           </a>
 
-          {error && <p style={{ color: "red" }}>{error}</p>}
-
-          {image != null && (
-            <img
-              src={image}
-              className="card-img-top px-3 py-4"
-              alt={`Screenshot of ${websiteName}!`}
-            />
-          )}
-          <div>
+          <iframe src={siteGithub}></iframe>
             <h5 className="card-title ">{websiteName}</h5>
           </div>
-        </div>
       </div>
     </>
   );

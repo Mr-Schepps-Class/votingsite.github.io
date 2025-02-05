@@ -13,7 +13,7 @@ class User(db.Model):
 class Website(db.Model):
     __tablename__ = "websites"
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, unique = False)
+    name = db.Column(db.String)
     url = db.Column(db.String, unique = True)
     userId = db.Column(db.Integer, db.ForeignKey("User.id"), nullable = False)
     
@@ -22,7 +22,7 @@ class Votes(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     rating = db.Column(db.Integer, unique = False)
     userId = db.Column(db.Integer, db.ForeignKey("User.id"), nullable = False)
-    websiteId = db.Column(db.Integer, db.ForeignKey("Websites.id"), nullable = False)
+    websiteId = db.Column(db.Integer, db.ForeignKey("Website.id"), nullable = False)
 
 
 
