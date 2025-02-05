@@ -10,7 +10,7 @@ class User(db.Model):
     password = db.Column(db.String(30))
 
 
-class Websites(db.Model):
+class Website(db.Model):
     __tablename__ = "websites"
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, unique = False)
