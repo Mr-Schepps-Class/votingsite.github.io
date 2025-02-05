@@ -213,5 +213,10 @@ $CARDbtnhovercolor: #bfd5de;
   background-color: $CARDbtnhovercolor;
 }
 
+.col-centered {
+  margin: 0 auto;
+  float: none;
+}
+
 $body-bg: #dae8ee;
 @import "bootstrap";
