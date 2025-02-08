@@ -274,6 +274,10 @@ $inputfieldblue: #c6dde6;
     color: #dbdbdb;
   }
 }
+.title-text {
+  font-weight: 500;
+  color: $FONTCOLOR;
+}
 
 $body-bg: #dae8ee;
 @import "bootstrap";

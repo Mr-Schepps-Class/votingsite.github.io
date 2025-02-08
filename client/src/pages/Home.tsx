@@ -3,6 +3,7 @@ import FeaturedSite from "../components/FeaturedSite";
 import AverageRating from "../components/AverageRating";
 import websitephoto from "../assets/websitephoto.png";
 import httpClient from "../httpClient";
+import PageTitle from "../components/PageTitle";
 
 const Home = () => {
   let timeDifference: any = [];
@@ -46,8 +47,7 @@ const Home = () => {
   return (
     <>
       <title>Web Portal - Home Page</title>
-
-      <h1 className="heavy-text">Welcome to the Web Portal</h1>
+      <PageTitle>Welcome to the Web Portal</PageTitle>
       <h3 className="heavy-text">Showcase Your Unique Web Project!</h3>
 
       <img className="basic-image" src={websitephoto}></img>

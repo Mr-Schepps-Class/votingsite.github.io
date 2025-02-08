@@ -1,11 +1,12 @@
 import React from "react";
 import LoginPage from "../components/LoginPage";
+import PageTitle from "../components/PageTitle";
 
 const Login = () => {
   return (
     <>
       <title>Web Portal - Login</title>
-      <h1 className="heavy-text mb-4">Login Page</h1>
+      <PageTitle>Login Page</PageTitle>
 
       <LoginPage></LoginPage>
     </>

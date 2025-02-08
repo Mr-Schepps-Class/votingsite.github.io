@@ -1,11 +1,12 @@
 import React from "react";
 import RegisterPage from "../components/Register";
+import PageTitle from "../components/PageTitle";
 
 const Signup = () => {
   return (
     <>
       <title>Web Portal - Create Account</title>
-      <h1 className="heavy-text mb-4">Signup Page</h1>
+      <PageTitle>Signup Page!</PageTitle>
 
       <RegisterPage></RegisterPage>
     </>
