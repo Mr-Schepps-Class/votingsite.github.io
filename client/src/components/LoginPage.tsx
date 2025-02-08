@@ -1,59 +1,96 @@
 import httpClient from "../httpClient";
-import React from "react"
+import React from "react";
+import DetectMobile from "./DetectMobile";
+import ViewPass from "./ViewPass";
 
+function LoginPage() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const fieldwidths = DetectMobile() ? 100 : 50;
+  const inputmargins = DetectMobile() ? 1 : 2;
+  const paddingwrap = DetectMobile() ? 3 : 5;
+  const paddingwrapY = DetectMobile() ? 1 : 3;
+  const columnsize = DetectMobile() ? 10 : 6;
 
-function LoginPage(){
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
+  const logInUser = async () => {
+    try {
+      const resp = await httpClient.post("http://127.0.0.1:5000/login", {
+        email,
+        password,
+      });
 
-    const logInUser = async() => {
+      window.location.href = "/";
+    } catch (e: any) {
+      //console.log(e.message);
 
-        try{
-            const resp = await httpClient.post("http://127.0.0.1:5000/login", {
-                email,
-                password,
-            });
+      //kinda hacky solution here
+      if (e.message == "Request failed with status code 401") {
+        alert("Invalid Credentials");
+      }
+    }
+  };
 
-            window.location.href = "/";
-        } 
-        catch (e : any) {
-            //console.log(e.message);
-
-            //kinda hacky solution here
-            if(e.message == "Request failed with status code 401"){
-                alert("Invalid Credentials");
-            }
-            
-        }
-    };
-
-    return(
-        <div>
-            <form>
-                <div>
-                    <label>Email: </label>
-                    <input
-                        type = "text"
-                        value = {email}
-                        onChange = {(e) => setEmail(e.target.value)}
-                    />
+  return (
+    <>
+      <div>
+        <div className="container text-center">
+          <div className="row">
+            <div className="col"></div>
+            <div
+              className={`col-${columnsize} coloredlogin px-${paddingwrap} py-${paddingwrapY}`}
+            >
+              <form>
+                <div
+                  className={`col-centered input-group my-4 px-${inputmargins}`}
+                >
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-control btn btn-secondary p-3"
+                    id="bluefield"
+                    placeholder="Email"
+                  />
                 </div>
-
-                <div>
-                    <label>Password: </label>
-                    <input
-                        type = "text"
-                        value = {password}
-                        onChange = {(e) => setPassword(e.target.value)}
-                    />
+                <div
+                  className={`col-centered input-group my-4 px-${inputmargins}`}
+                >
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    className="form-control btn btn-secondary p-3"
+                    id="bluefield2"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
+                <b className="basic-text">
+                  View Password
+                  <input
+                    type="checkbox"
+                    onClick={ViewPass}
+                    className="mx-2 "
+                  ></input>
+                </b>
 
-                <button type = "button" onClick={() => logInUser()}>
-                    Submit
-                </button>
-            </form>
+                <div className="input-group my-4 px-2">
+                  <button
+                    type="submit"
+                    className={`mt-4 btn w-${fieldwidths} col-centered p-3`}
+                    id="bluefieldbtn"
+                    onClick={() => logInUser()}
+                  >
+                    Log In
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div className="col"></div>
+          </div>
         </div>
-    )
+      </div>
+    </>
+  );
 }
 
 export default LoginPage;

@@ -61,7 +61,7 @@ const FileUpload = () => {
           </span>
           <input
             type="text"
-            className="form-control btn btn-secondary p-2"
+            className="form-control btn btn-secondary p-2 "
             id="white-placeholder"
             placeholder="My Awesome Site"
             value={title}
