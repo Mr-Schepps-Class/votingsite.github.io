@@ -4,12 +4,13 @@ from flask_cors import CORS
 from flask_session import Session
 from flask_bcrypt import Bcrypt
 from config import ApplicationConfig
-from models import db, User, Website
+from models import db, User, Website, Votes
 import requests
 import pandas as pd
-import sqlalchemy
+from sqlalchemy import func
 from pyppeteer import launch
 import asyncio
+
 
 
 #configuring app, cors, hashing, and making sure the session doesnt reset between queries
@@ -28,6 +29,25 @@ with app.app_context():
 
 server_session = Session(app)
 
+@app.route('/query', method = ['GET'])
+def query():
+    id = request.json('id')
+
+    site = Website.query.filter(id = id).first()
+
+    if(site is None):
+        return jsonify({"error" : "No site with this id"}), 401
+    
+    rating = session.query(func.avg(Votes.value)).filter(Votes.websiteId == site.id).scalar()
+    
+    return jsonify({
+        "name" : site.name,
+        "url" : site.url,
+        "userId" : site.userId,
+        "rating" : rating
+    }), 200
+
+
 async def take_screenshot(url):
     """Launch browser, take screenshot, and return image data"""
     browser = await launch(
@@ -40,9 +60,6 @@ async def take_screenshot(url):
     screenshot = await page.screenshot({'encoding': 'base64'})
     await browser.close()
     return screenshot
-
-
-
 
 
 @app.route('/upload', methods=['POST'])
