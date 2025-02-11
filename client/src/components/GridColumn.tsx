@@ -35,6 +35,7 @@ const GridColumn = ({ totalSites }: GridColumnProps) => {
       } catch (error) {
           console.error("Error getting data: ", error);
       }
+  }
 
 
 
