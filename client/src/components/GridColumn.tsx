@@ -13,23 +13,17 @@ const GridColumn = ({ totalSites }: GridColumnProps) => {
   const rowNum = Math.ceil(totalSites / colNum);
   const [name, setName] = useState("");
   const [rating, setRating] = useState("");
-  const [url, getUrl] = useState(""); 
+  const [url, getUrl] = useState("");
 
-  const getData = async (id:number) => {
-      try {
-          const response = await httpClient.get("http://127.0.0.1:5000/query", {
-              params: { id: id}, 
-          });
-          
-          
-      } catch (error) {
-          console.error("Error getting data: ", error);
-      }
-
-
-
-
-
+  const getData = async (id: number) => {
+    try {
+      const response = await httpClient.get("http://127.0.0.1:5000/query", {
+        params: { id: id },
+      });
+    } catch (error) {
+      console.error("Error getting data: ", error);
+    }
+  };
   return (
     <>
       {Array.from({ length: rowNum }).map((_, rowIndex) => (
