@@ -6,10 +6,8 @@ import httpClient from "../httpClient";
 
 const GridColumn = () => {
   const colNum = DetectMobile() ? 1 : 3;
-  const rowNum = Math.ceil(totalSites / colNum);
+
   const [size, setSize] = useState(0);
-
-
 
   const getSize = async () => {
     try {
@@ -30,6 +28,10 @@ const GridColumn = () => {
       console.error("Error getting data: ", error);
     }
   };
+
+  const totalSites = size;
+  const rowNum = Math.ceil(totalSites / colNum);
+
   return (
     <>
       {Array.from({ length: rowNum }).map((_, rowIndex) => (
