@@ -3,6 +3,7 @@ import FeaturedSite from "../components/FeaturedSite";
 import AverageRating from "../components/AverageRating";
 import websitephoto from "../assets/websitephoto.png";
 import httpClient from "../httpClient";
+import ScreenshotComponent from "../components/Screenshot";
 import PageTitle from "../components/PageTitle";
 
 const Home = () => {
@@ -44,8 +45,11 @@ const Home = () => {
       ? `${timeDifference[1]} Days`
       : `${timeDifference[0]} Months, ${timeDifference[1]} Days`;
 
+
   return (
     <>
+
+ 
       <title>Web Portal - Home Page</title>
       <PageTitle>Welcome to the Web Portal</PageTitle>
       <h3 className="heavy-text">Showcase Your Unique Web Project!</h3>
