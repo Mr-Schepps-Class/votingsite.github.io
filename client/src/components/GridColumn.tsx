@@ -1,6 +1,8 @@
 import React from "react";
 import SiteCard from "./SiteCard";
 import DetectMobile from "../components/DetectMobile";
+import { useState } from "react";
+import httpClient from "../httpClient";
 
 interface GridColumnProps {
   totalSites: number;
@@ -9,6 +11,24 @@ interface GridColumnProps {
 const GridColumn = ({ totalSites }: GridColumnProps) => {
   const colNum = DetectMobile() ? 1 : 3;
   const rowNum = Math.ceil(totalSites / colNum);
+  const [name, setName] = useState("");
+  const [rating, setRating] = useState("");
+  const [url, getUrl] = useState(""); 
+
+  const getData = async (id:number) => {
+      try {
+          const response = await httpClient.get("http://127.0.0.1:5000/query", {
+              params: { id: id}, 
+          });
+          
+          
+      } catch (error) {
+          console.error("Error getting data: ", error);
+      }
+
+
+
+
 
   return (
     <>
