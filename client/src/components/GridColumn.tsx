@@ -11,7 +11,7 @@ interface GridColumnProps {
 const GridColumn = ({ totalSites }: GridColumnProps) => {
   const colNum = DetectMobile() ? 1 : 3;
   const rowNum = Math.ceil(totalSites / colNum);
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(0);
 
   const getSize = async () => {
     try {
