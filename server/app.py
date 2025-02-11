@@ -29,6 +29,12 @@ with app.app_context():
 
 server_session = Session(app)
 
+@app.route("/getSize", method = ["GET"])
+def getSize():
+    return jsonify({
+        "size" : len(Website)
+    })
+
 @app.route('/query', method = ['GET'])
 def query():
     id = request.json('id')

@@ -11,9 +11,17 @@ interface GridColumnProps {
 const GridColumn = ({ totalSites }: GridColumnProps) => {
   const colNum = DetectMobile() ? 1 : 3;
   const rowNum = Math.ceil(totalSites / colNum);
-  const [name, setName] = useState("");
-  const [rating, setRating] = useState("");
-  const [url, getUrl] = useState("");
+  const [size, setSize] = useState("");
+
+  const getSize = async () => {
+    try {
+      const response = await httpClient.get("http://127.0.0.1:5000/getSize");
+
+      setSize(response.data.image);
+    } catch (error) {
+      console.error("Error getting data: ", error);
+    }
+  };
 
   const getData = async (id: number) => {
     try {
