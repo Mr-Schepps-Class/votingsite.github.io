@@ -17,7 +17,7 @@ const GridColumn = ({ totalSites }: GridColumnProps) => {
     try {
       const response = await httpClient.get("http://127.0.0.1:5000/getSize");
 
-      setSize(response.data.image);
+      setSize(response.data.size);
     } catch (error) {
       console.error("Error getting data: ", error);
     }
