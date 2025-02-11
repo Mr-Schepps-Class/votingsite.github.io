@@ -279,5 +279,14 @@ $inputfieldblue: #c6dde6;
   color: $FONTCOLOR;
 }
 
+#votingRange {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  appearance: slider-vertical;
+  width: 25px;
+  vertical-align: middle;
+  height: 75%;
+}
+
 $body-bg: #dae8ee;
 @import "bootstrap";

@@ -16,7 +16,7 @@ const SiteCard = ({ siteGithub, websiteName, rating }: SiteCardProps) => {
         <div className="card-body">
           <AverageRating rating={rating} />
           <a
-            href="#"
+            href="/website-preview"
             className="btn btn-primary w-75 py-3 fs-4 fw-bolder"
             id="my-card-button"
           >

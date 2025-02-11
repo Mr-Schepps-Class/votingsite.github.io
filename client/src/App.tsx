@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import NavBar from "./components/NavBar";
 import RegisterPage from "./components/Register";
 import NotFound from "./pages/NotFound";
+import DisplaySite from "./pages/DisplaySite";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/website-preview" element={<DisplaySite />} />
         </Routes>
       </main>
     </>
