@@ -8,7 +8,8 @@ from models import db, User, Website
 import requests
 import pandas as pd
 import sqlalchemy
-
+from pyppeteer import launch
+import asyncio
 
 
 #configuring app, cors, hashing, and making sure the session doesnt reset between queries
@@ -27,24 +28,47 @@ with app.app_context():
 
 server_session = Session(app)
 
+async def take_screenshot(url):
+    """Launch browser, take screenshot, and return image data"""
+    browser = await launch(
+    handleSIGINT=False,
+    handleSIGTERM=False,
+    handleSIGHUP=False
+)
+    page = await browser.newPage()
+    await page.goto(url, {'waitUntil': 'networkidle2'})
+    screenshot = await page.screenshot({'encoding': 'base64'})
+    await browser.close()
+    return screenshot
+
+
+
+
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
     email = request.json['email']
     url = request.json['url']
+    title = request.json["title"]
     
     user = User.query.filter_by(email = email).first()
 
     if not url:
         return jsonify({"error": "No URL provided"}), 400
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    image_data = loop.run_until_complete(take_screenshot(url))
+
+    print(type(image_data))
     
     if(Website.query.filter_by(userId = user.id).first() is None):
-        nsite = Website(name = "tmp", url = url, userId = user.id)
+        nsite = Website(name = title, url = url, userId = user.id)
         db.session.add(nsite)
     else:
         site = Website.query.filter_by(userId = user.id).first()
 
-        site.name = "newTmp"
+        site.name = title
         site.url = url
     
     db.session.commit()

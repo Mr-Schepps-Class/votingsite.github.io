@@ -7,6 +7,7 @@ const FileUpload = () => {
   const [message, setMessage] = useState("");
   const [user, setUser] = React.useState("");
   const [title, setTitle] = useState("");
+  
 
   const email = user.email;
 
@@ -27,7 +28,7 @@ const FileUpload = () => {
   };
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
-  };
+  }; 
 
   const handleAllUploads = async (e) => {
     e.preventDefault();
@@ -51,6 +52,8 @@ const FileUpload = () => {
       setMessage(error.response?.data?.error || "URL upload failed");
     }
   };
+
+  
 
   return (
     <div>

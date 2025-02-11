@@ -11,7 +11,7 @@ class User(db.Model):
 
 
 class Website(db.Model):
-    __tablename__ = "websites"
+    __tablename__ = "Website"
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     url = db.Column(db.String, unique = True)
