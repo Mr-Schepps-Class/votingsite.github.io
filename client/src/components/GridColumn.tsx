@@ -12,35 +12,26 @@ const GridColumn = ({ totalSites }: GridColumnProps) => {
   const colNum = DetectMobile() ? 1 : 3;
   const rowNum = Math.ceil(totalSites / colNum);
   const [size, setSize] = useState("");
-  
-  const getSize = async() => {
+
+  const getSize = async () => {
     try {
       const response = await httpClient.get("http://127.0.0.1:5000/getSize");
 
       setSize(response.data.image);
-      
-
-  } catch (error) {
+    } catch (error) {
       console.error("Error getting data: ", error);
-  }
-  }
+    }
+  };
 
-  const getData = async (id:number) => {
-      try {
-          const response = await httpClient.get("http://127.0.0.1:5000/query", {
-              params: { id: id}, 
-          });
-          
-
-      } catch (error) {
-          console.error("Error getting data: ", error);
-      }
-  }
-
-
-
-
-
+  const getData = async (id: number) => {
+    try {
+      const response = await httpClient.get("http://127.0.0.1:5000/query", {
+        params: { id: id },
+      });
+    } catch (error) {
+      console.error("Error getting data: ", error);
+    }
+  };
   return (
     <>
       {Array.from({ length: rowNum }).map((_, rowIndex) => (
