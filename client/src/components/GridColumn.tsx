@@ -29,7 +29,6 @@ const GridColumn = () => {
     }
   };
 
-  getSize();
   const totalSites = size;
   const rowNum = Math.ceil(totalSites / colNum);
 
