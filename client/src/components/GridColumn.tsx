@@ -4,14 +4,12 @@ import DetectMobile from "../components/DetectMobile";
 import { useState } from "react";
 import httpClient from "../httpClient";
 
-interface GridColumnProps {
-  totalSites: number;
-}
-
-const GridColumn = ({ totalSites }: GridColumnProps) => {
+const GridColumn = () => {
   const colNum = DetectMobile() ? 1 : 3;
   const rowNum = Math.ceil(totalSites / colNum);
   const [size, setSize] = useState(0);
+
+
 
   const getSize = async () => {
     try {
