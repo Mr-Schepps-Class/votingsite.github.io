@@ -283,9 +283,10 @@ $inputfieldblue: #c6dde6;
   writing-mode: vertical-lr;
   direction: rtl;
   appearance: slider-vertical;
-  width: 25px;
+  width: 16px;
   vertical-align: middle;
   height: 75%;
+  float: right;
 }
 
 $body-bg: #dae8ee;
