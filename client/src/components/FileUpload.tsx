@@ -60,29 +60,33 @@ const FileUpload = () => {
       <form onSubmit={handleAllUploads}>
         <div className="col-centered w-50 input-group my-4 px-5">
           <span className="input-group-text" id="basic-addon1">
-            Enter Link
-          </span>
-          <input
-            type="url"
-            className="form-control"
-            placeholder="https://"
-            value={url}
-            onChange={handleUrlChange}
-          />
-        </div>
-        <div className="col-centered w-50 input-group my-4 px-5">
-          <span className="input-group-text" id="basic-addon1">
             Website Title
           </span>
           <input
             type="text"
-            className="form-control"
+            className="form-control btn btn-secondary p-2 "
+            id="white-placeholder"
             placeholder="My Awesome Site"
             value={title}
             onChange={handleTitleChange}
           />
         </div>
-        <button type="submit">Upload</button>
+        <div className="col-centered w-50 input-group my-4 px-5">
+          <span className="input-group-text" id="basic-addon1">
+            Website Link
+          </span>
+          <input
+            type="url"
+            className="form-control btn btn-secondary p-2"
+            id="white-placeholder"
+            placeholder="https://"
+            value={url}
+            onChange={handleUrlChange}
+          />
+        </div>
+        <button type="submit" className="mb-2 btn btn-outline-dark">
+          Upload
+        </button>
       </form>
       {message && <p>{message}</p>}
     </div>

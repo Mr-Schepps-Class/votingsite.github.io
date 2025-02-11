@@ -122,7 +122,6 @@ li.header-item {
 
 .basic-text {
   color: $FONTCOLOR;
-  font-weight: 300;
 }
 
 .featured-site {
@@ -216,6 +215,68 @@ $CARDbtnhovercolor: #bfd5de;
 .col-centered {
   margin: 0 auto;
   float: none;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+.coloredlogin {
+  background-color: #b3ccd7;
+  border-radius: 50px;
+}
+
+$inputfieldblue: #c6dde6;
+
+#bluefield {
+  background-color: $inputfieldblue;
+  border-radius: 50px;
+  color: $FONTCOLOR;
+  @include placeholder {
+    color: #919191;
+    font-weight: bolder;
+  }
+  border: none;
+}
+#bluefield2 {
+  background-color: $inputfieldblue;
+  border-radius: 50px;
+  color: $FONTCOLOR;
+  @include placeholder {
+    color: #919191;
+    font-weight: bolder;
+  }
+  border: none;
+}
+#bluefieldbtn {
+  background-color: $inputfieldblue;
+  border-radius: 50px;
+  color: $FONTCOLOR;
+  border: #dae8ee solid 5px;
+  font-weight: bolder;
+}
+#bluefieldbtn:hover {
+  background-color: $CARDbtnhovercolor;
+}
+
+#white-placeholder {
+  @include placeholder {
+    color: #dbdbdb;
+  }
+}
+.title-text {
+  font-weight: 500;
+  color: $FONTCOLOR;
 }
 
 $body-bg: #dae8ee;

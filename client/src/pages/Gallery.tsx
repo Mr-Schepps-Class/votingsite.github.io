@@ -1,14 +1,13 @@
 import React from "react";
 import SiteCard from "../components/SiteCard";
 import CardGrid from "../components/CardGrid";
-import MobileCardGrid from "../components/MobileCardGrid";
+import PageTitle from "../components/PageTitle";
 
 const Gallery = () => {
   return (
     <>
       <title>Web Portal - Gallery</title>
-      <h1 className="heavy-text">Project Gallery</h1>
-      <br />
+      <PageTitle>Project Gallery</PageTitle>
       <CardGrid />
     </>
   );

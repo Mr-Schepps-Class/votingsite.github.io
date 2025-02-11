@@ -1,9 +1,15 @@
 import React from "react";
 import LoginPage from "../components/LoginPage";
+import PageTitle from "../components/PageTitle";
 
 const Login = () => {
   return (
-    <LoginPage></LoginPage>
+    <>
+      <title>Web Portal - Login</title>
+      <PageTitle>Login Page</PageTitle>
+
+      <LoginPage></LoginPage>
+    </>
   );
 };
 
