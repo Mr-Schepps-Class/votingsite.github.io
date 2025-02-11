@@ -6,7 +6,7 @@ const RatingScale = () => {
       <label htmlFor="votingRange" className="form-label"></label>
       <input
         type="range"
-        className="form-range"
+        className="form-range m-3"
         min="0"
         max="10"
         step="0.1"
