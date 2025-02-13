@@ -1,11 +1,8 @@
-import React from "react";
 import SiteCard from "./SiteCard";
 import DetectMobile from "../components/DetectMobile";
-import { useState } from "react";
-import httpClient from "../httpClient";
 
-import React, { useEffect, useState } from "react";
-import httpClient from "./httpClient"; // Adjust import based on your project structure
+import { useEffect, useState } from "react";
+import httpClient from "../httpClient"; // Adjust import based on your project structure
 
 const GridColumn = () => {
   const [totalSites, setTotalSites] = useState<number>(0);
