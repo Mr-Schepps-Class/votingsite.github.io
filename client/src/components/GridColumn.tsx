@@ -1,33 +1,25 @@
+import React from "react";
 import SiteCard from "./SiteCard";
 import DetectMobile from "../components/DetectMobile";
-
-import { useEffect, useState } from "react";
-import httpClient from "../httpClient"; // Adjust import based on your project structure
+import { useState } from "react";
+import httpClient from "../httpClient";
 
 const GridColumn = () => {
-  const [totalSites, setTotalSites] = useState<number>(0);
   const colNum = DetectMobile() ? 1 : 3;
+  const [size, setSize] = useState(0);
+  
+
+
 
   const getSize = async () => {
     try {
       const response = await httpClient.get("http://127.0.0.1:5000/getSize");
-      return response.data.size;
+
+      setSize(response.data.size);
     } catch (error) {
       console.error("Error getting data: ", error);
-      return 0; // Fallback to 0 if there's an error
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const size = await getSize();
-      setTotalSites(size);
-    };
-
-    fetchData();
-  }, []); // Empty dependency array to run the effect only once when component mounts
-
-  const rowNum = Math.ceil(totalSites / colNum); // Now totalSites will be resolved
 
   const getData = async (id: number) => {
     try {
@@ -39,6 +31,9 @@ const GridColumn = () => {
     }
   };
 
+  getSize();
+
+  const rowNum = Math.ceil(size / colNum);
   return (
     <>
       {Array.from({ length: rowNum }).map((_, rowIndex) => (
