@@ -29,8 +29,6 @@ const GridColumn = () => {
 
   const rowNum = Math.ceil(totalSites / colNum); // Now totalSites will be resolved
 
-  export default GridColumn;
-
   const getData = async (id: number) => {
     try {
       const response = await httpClient.get("http://127.0.0.1:5000/query", {
