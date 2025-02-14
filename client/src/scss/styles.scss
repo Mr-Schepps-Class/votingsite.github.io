@@ -282,12 +282,37 @@ $inputfieldblue: #c6dde6;
 #votingRange {
   writing-mode: vertical-lr;
   direction: rtl;
-  appearance: slider-vertical;
-  width: 16px;
-  vertical-align: middle;
-  height: 75%;
-  float: right;
+
+  width: 32px;
+  border-radius: 50px;
+  height: 70vh;
+  margin: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: linear-gradient(hsl(100% 72% 80%), hsl(0% 72% 80%));
+  border: grey 3px solid;
+}
+:root {
+  --border-background: hsl(1 15% 43%);
+  --slider-background: hsl(1 72% 70%);
 }
 
+#votingRange::-webkit-slider-thumb {
+  appearance: none;
+  width: 55px;
+  height: 55px;
+  background-color: var(--slider-background);
+  border: var(--border-background) 3px solid;
+  border-radius: 100%;
+
+  cursor: pointer;
+}
+#voteText {
+  text-align: center;
+}
+#slidewrap {
+  float: right;
+  width: 55px;
+}
 $body-bg: #dae8ee;
 @import "bootstrap";
