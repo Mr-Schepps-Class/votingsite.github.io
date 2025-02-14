@@ -31,27 +31,38 @@ server_session = Session(app)
 
 @app.route("/getSize", methods = ["GET"])
 def getSize():
+    print(db.session.query(Website).count())
     return jsonify({
-        "size" : len(Website)
+        "size" : db.session.query(Website).count()
     })
 
 @app.route('/query', methods = ['GET'])
 def query():
-    id = request.json('id')
+    id = request.args.get("id")
 
-    site = Website.query.filter(id = id).first()
+    id = int(id) + 1
+
+    site = Website.query.filter_by(id = id).first()
 
     if(site is None):
         return jsonify({"error" : "No site with this id"}), 401
     
-    rating = session.query(func.avg(Votes.value)).filter(Votes.websiteId == site.id).scalar()
+    rating = db.session.query(func.avg(Votes.rating)).filter(Votes.websiteId == site.id).scalar()
+
+    if(rating is None):
+        rating = 0
+    else:
+        rating *= 10
+
     
+    
+
     return jsonify({
         "name" : site.name,
         "url" : site.url,
         "userId" : site.userId,
         "rating" : rating
-    }), 200
+    })
 
 
 async def take_screenshot(url):
@@ -83,7 +94,7 @@ def upload_file():
     asyncio.set_event_loop(loop)
     image_data = loop.run_until_complete(take_screenshot(url))
 
-    print(type(image_data))
+    
     
     if(Website.query.filter_by(userId = user.id).first() is None):
         nsite = Website(name = title, url = url, userId = user.id)
