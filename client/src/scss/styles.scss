@@ -148,23 +148,33 @@ li.header-item {
   font-weight: 400;
   color: $FONTCOLOR;
 }
-.rating-outer-circle {
+
+.extramoves {
+  position: absolute;
+  right: -2vh;
+  top: -2vh;
   background-color: #c6dde6;
   border-radius: 50%;
-  width: 7vh;
-  height: 7vh;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-
-  right: -2vh;
-  top: -2vh;
+}
+.rating-outer-circle {
+  background-color: grey;
+  text-align: center;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .rating-inner-circle {
   border-radius: 50%;
-  width: 6vh;
-  height: 6vh;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,7 +182,7 @@ li.header-item {
 .rating-text {
   font-weight: 500;
   color: $FONTCOLOR;
-  font-size: 3vh;
+  font-size: 1.3rem;
 }
 .featured-container {
   display: flex;
@@ -285,7 +295,7 @@ $inputfieldblue: #c6dde6;
 
   width: 32px;
   border-radius: 50px;
-  height: 70vh;
+  height: 55vh;
   margin: auto;
   -webkit-appearance: none;
   appearance: none;
@@ -307,12 +317,49 @@ $inputfieldblue: #c6dde6;
 
   cursor: pointer;
 }
-#voteText {
+.voteText {
   text-align: center;
+  color: grey;
+  margin: auto;
 }
 #slidewrap {
   float: right;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#slidewrapm {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#votingRangem {
+  width: 100vw;
+  border-radius: 50px;
+  height: 32px;
+
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: linear-gradient(
+    to left,
+    hsl(100% 72% 80%),
+    hsl(0% 72% 80%)
+  );
+  border: grey 3px solid;
+  float: left;
+}
+#votingRangem::-webkit-slider-thumb {
+  appearance: none;
   width: 55px;
+  height: 55px;
+  background-color: var(--slider-background);
+  border: var(--border-background) 3px solid;
+  border-radius: 100%;
+
+  cursor: pointer;
 }
 $body-bg: #dae8ee;
 @import "bootstrap";

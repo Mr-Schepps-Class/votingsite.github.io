@@ -26,7 +26,7 @@ const FeaturedSite = ({
             {<iframe id="myIframe" width="100%" src={link}></iframe>}
           </div>
 
-          <AverageRating rating={rating} />
+          <AverageRating rating={rating} extraclass={"extramoves"} />
         </div>
 
         <div className="featured-caption">
