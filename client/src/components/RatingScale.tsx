@@ -43,7 +43,11 @@ const RatingScale = () => {
         onInput={getVal}
       />
 
-      <h1 className={`voteText ${margT}`}>{Number(sliderValue).toFixed(1)}</h1>
+      <h1 className={`voteText ${margT}`}>
+        {Number(sliderValue) != 10
+          ? Number(sliderValue).toFixed(1)
+          : Number(sliderValue)}
+      </h1>
     </div>
   );
 };
