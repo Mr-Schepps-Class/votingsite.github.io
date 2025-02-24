@@ -2,9 +2,10 @@ import React from "react";
 
 interface RatingProps {
   rating: number;
+  extraclass?: string;
 }
 
-const AverageRating = ({ rating }: RatingProps) => {
+const AverageRating = ({ rating, extraclass }: RatingProps) => {
   const hue = rating;
   const saturation = "72%";
   const lightness = "80%";
@@ -12,14 +13,12 @@ const AverageRating = ({ rating }: RatingProps) => {
   const hslColor = `hsl(${hue} ${saturation} ${lightness})`;
 
   return (
-    <div>
-      <div className="rating-outer-circle">
-        <div
-          style={{ backgroundColor: hslColor }}
-          className="rating-inner-circle"
-        >
-          <p className="rating-text nomarg">{rating / 10}</p>
-        </div>
+    <div className={extraclass}>
+      <div
+        style={{ backgroundColor: hslColor }}
+        className={`rating-inner-circle`}
+      >
+        <p className="rating-text nomarg">{rating / 10}</p>
       </div>
     </div>
   );
