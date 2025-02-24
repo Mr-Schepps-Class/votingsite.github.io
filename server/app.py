@@ -10,6 +10,7 @@ import pandas as pd
 from sqlalchemy import func
 from pyppeteer import launch
 import asyncio
+import base64
 
 
 
@@ -17,7 +18,9 @@ import asyncio
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
 app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
-app.config.update(UPLOAD_FOLDER = '/Users/nathan/Documents/GitHub/votingsite.github.io/server/uploads')
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'public', 'uploads')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 CORS(app, supports_credentials=True)
 bcrypt = Bcrypt(app)
@@ -92,7 +95,8 @@ def upload_file():
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    image_data = loop.run_until_complete(take_screenshot(url))
+    
+    
 
     
     
@@ -104,15 +108,17 @@ def upload_file():
 
         site.name = title
         site.url = url
+
+    image_data = base64.b64decode(loop.run_until_complete(take_screenshot(url)))
+    file_path = os.path.join(UPLOAD_FOLDER, str(user.id))
+
+    with open(file_path, "wb") as f:
+        f.write(image_data)
+
     
     db.session.commit()
 
-    websites = Website.query.all()
-    for site in websites:
-        print(site.id, site.name, site.url, site.userId)
     
-    
-
 
     return jsonify({"message": "File downloaded successfully"}), 200
 
