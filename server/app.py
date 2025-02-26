@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, send_from_directory
 from flask_cors import CORS
 from flask_session import Session
 from flask_bcrypt import Bcrypt
@@ -18,7 +18,8 @@ import base64
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
 app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
-UPLOAD_FOLDER = os.path.join(os.getcwd(), 'public', 'uploads')
+UPLOAD_FOLDER = 'server/static'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -31,6 +32,8 @@ with app.app_context():
     db.create_all()
 
 server_session = Session(app)
+
+
 
 @app.route("/getSize", methods = ["GET"])
 def getSize():
@@ -84,6 +87,9 @@ async def take_screenshot(url):
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+
+    if("email" not in request.json):
+        return jsonify({"error": "Please Login"}), 400
     email = request.json['email']
     url = request.json['url']
     title = request.json["title"]
@@ -92,6 +98,9 @@ def upload_file():
 
     if not url:
         return jsonify({"error": "No URL provided"}), 400
+
+    if(Website.query.filter_by(url = url).first() is not None):
+        return jsonify({"error": "This url already exists"}), 400
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
@@ -110,7 +119,7 @@ def upload_file():
         site.url = url
 
     image_data = base64.b64decode(loop.run_until_complete(take_screenshot(url)))
-    file_path = os.path.join(UPLOAD_FOLDER, str(user.id))
+    file_path = os.path.join(UPLOAD_FOLDER, str(user.id) + ".png",)
 
     with open(file_path, "wb") as f:
         f.write(image_data)

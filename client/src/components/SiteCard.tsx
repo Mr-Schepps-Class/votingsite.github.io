@@ -12,6 +12,7 @@ const SiteCard = ({ customId }: SiteCardProps) => {
   const [name, setName] = useState("");
   const [rating, setRating] = useState(0);
   const [url, setUrl] = useState("");
+  const [userId, setUserId] = useState(0);
 
   const getData = async (id: number) => {
     try {
@@ -22,12 +23,14 @@ const SiteCard = ({ customId }: SiteCardProps) => {
       setName(response.data.name);
       setRating(response.data.rating);
       setUrl(response.data.url);
+      setUserId(response.data.userId);
     } catch (error) {
       console.error("Error getting data: ", error);
     }
   };
 
   getData(customId);
+  console.log(`http://127.0.0.1:5000/static/${userId}.png`);
   return (
     <>
       <div className="card mb-3 w-100 mx-3 my-4" id="my-card-color">
@@ -40,8 +43,9 @@ const SiteCard = ({ customId }: SiteCardProps) => {
           >
             explore
           </a>
-
-          <iframe src={url}></iframe>
+          
+          
+          <img src={`http://127.0.0.1:5000/static/${userId}.png`} ></img>
           <h5 className="card-title ">{name}</h5>
         </div>
       </div>
