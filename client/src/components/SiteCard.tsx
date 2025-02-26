@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import AverageRating from "./AverageRating";
 import { useEffect, useState } from "react";
 import httpClient from "../httpClient";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SiteCardProps {
   customId: number;
@@ -28,13 +29,28 @@ const SiteCard = ({ customId }: SiteCardProps) => {
   };
 
   getData(customId);
+
+  console.log(url);
+
+  const navigate = useNavigate();
+
+  const toNextPage = () => {
+    console.log(url);
+
+    navigate("/website-preview", {
+      state: { link: url, author: name },
+    });
+  };
+
   return (
     <>
       <div className="card mb-3 w-100 mx-3 my-4" id="my-card-color">
         <div className="card-body">
           <AverageRating rating={rating} extraclass={"extramoves"} />
           <a
-            href="/website-preview"
+            onClick={() => {
+              toNextPage();
+            }}
             className="btn btn-primary w-75 py-3 fs-4 fw-bolder"
             id="my-card-button"
           >

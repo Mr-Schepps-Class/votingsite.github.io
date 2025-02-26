@@ -4,7 +4,12 @@ import AverageRating from "./AverageRating";
 import DetectMobile from "./DetectMobile";
 let currentVal = 0;
 
-const RatingScale = () => {
+interface RatingScaleProps {
+  siteURL: string;
+  siteAuthor: string;
+}
+
+const RatingScale = ({ siteURL, siteAuthor }: RatingScaleProps) => {
   const [sliderValue, setSliderValue] = useState(0.1);
   const sliderOrientation = DetectMobile() ? "slidewrapm" : "slidewrap";
   const rangeOrientation = DetectMobile() ? "votingRangem" : "votingRange";
@@ -24,30 +29,42 @@ const RatingScale = () => {
   };
 
   return (
-    <div className={`${margEnd} col-4`} id={sliderOrientation}>
-      {DetectMobile() ? <></> : <h4 className="voteText">Average Rating</h4>}
-      {DetectMobile() ? (
-        <></>
-      ) : (
-        <AverageRating rating={97} extraclass={`rating-outer-circle my-3`} />
-      )}
+    <div className="row">
+      <div className="col-10">
+        <iframe src={siteURL}></iframe>
+        <p>{siteAuthor}</p>
+      </div>
+      <div className={`${margEnd} col-2`} id={sliderOrientation}>
+        {DetectMobile() ? (
+          <></>
+        ) : (
+          <h4 className="voteText">
+            Average <br></br>Rating
+          </h4>
+        )}
+        {DetectMobile() ? (
+          <></>
+        ) : (
+          <AverageRating rating={97} extraclass={`rating-outer-circle my-3`} />
+        )}
 
-      <input
-        type="range"
-        min="0.1"
-        max="10"
-        step="0.1"
-        id={rangeOrientation}
-        className={DetectMobile() ? "ms-3" : ""}
-        value={sliderValue}
-        onInput={getVal}
-      />
+        <input
+          type="range"
+          min="0.1"
+          max="10"
+          step="0.1"
+          id={rangeOrientation}
+          className={DetectMobile() ? "ms-3" : ""}
+          value={sliderValue}
+          onInput={getVal}
+        />
 
-      <h1 className={`voteText ${margT}`}>
-        {Number(sliderValue) != 10
-          ? Number(sliderValue).toFixed(1)
-          : Number(sliderValue)}
-      </h1>
+        <h1 className={`voteText ${margT}`}>
+          {Number(sliderValue) != 10
+            ? Number(sliderValue).toFixed(1)
+            : Number(sliderValue)}
+        </h1>
+      </div>
     </div>
   );
 };
