@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import httpClient from "../httpClient";
-import DetectMobile from "./DetectMobile";
 
 const NavBar = () => {
   const [user, setUser] = React.useState("");
@@ -60,9 +59,7 @@ const NavBar = () => {
                 {user != "none" ? (
                   <button
                     onClick={logoutUser}
-                    className={`btn btn-outline-light ${
-                      DetectMobile() ? `my-2` : `mx-2`
-                    }`}
+                    className="btn btn-outline-light me-2"
                     type="button"
                   >
                     Logout
@@ -92,12 +89,7 @@ const NavBar = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="/upload-project">
-                  <button
-                    className={`btn btn-outline-light me-2 ${
-                      DetectMobile() ? `mb-2` : ``
-                    } `}
-                    type="button"
-                  >
+                  <button className="btn btn-outline-light me-2" type="button">
                     Upload Project
                   </button>
                 </Link>
