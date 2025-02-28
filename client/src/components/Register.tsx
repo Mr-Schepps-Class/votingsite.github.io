@@ -28,6 +28,8 @@ function RegisterPage() {
       if (e.message == "Request failed with status code 409") {
         alert("This user already exists");
       }
+
+      
     }
   };
 
