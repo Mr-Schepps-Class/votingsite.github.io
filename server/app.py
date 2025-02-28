@@ -11,7 +11,6 @@ from sqlalchemy import func
 from pyppeteer import launch
 import asyncio
 import base64
-from email_validator import validate_email, EmailNotValidError
 
 
 
@@ -139,20 +138,6 @@ def register_user():
     email = request.json["email"]
     password = request.json["password"]
 
-    
-    try: 
-        email = validate_email(email).normalized
-
-        print(email)
-
-    except:
-        return jsonify({"error": "Please enter a valid email"}), 300
-    
-   
-    
-    
-    
-
     exists = User.query.filter_by(email = email).first() is not None
 
     if exists:
@@ -175,12 +160,6 @@ def register_user():
 def login_user():
     email = request.json["email"]
     password = request.json["password"]
-
-    try: 
-        email = validate_email(email).normalized
-
-    except:
-        return jsonify({"error": "Please enter a valid email"}), 300
 
     user = User.query.filter_by(email = email).first()
     

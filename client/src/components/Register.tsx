@@ -28,10 +28,6 @@ function RegisterPage() {
       if (e.message == "Request failed with status code 409") {
         alert("This user already exists");
       }
-
-      if(e.message == "Request failed with status code 300"){
-        alert("Please enter a valid email");
-      }
     }
   };
 
