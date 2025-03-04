@@ -6,6 +6,7 @@ import ViewPass from "./ViewPass";
 function RegisterPage() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [isValid, setIsValid] = React.useState(true);
   const fieldwidths = DetectMobile() ? 100 : 50;
   const inputmargins = DetectMobile() ? 1 : 2;
   const paddingwrap = DetectMobile() ? 3 : 5;
@@ -33,6 +34,22 @@ function RegisterPage() {
     }
   };
 
+  const validateEmail = (email : string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleChange = (e : any) => {
+    const value = e.target.value;
+    setEmail(value);
+    setIsValid(validateEmail(value));
+  };
+
+  const handleSubmit = (e : any) => {
+    e.preventDefault();
+    alert('Email submitted: ' + email);
+  };
+
   return (
     <>
       <div>
@@ -42,14 +59,15 @@ function RegisterPage() {
             <div
               className={`col-${columnsize} coloredlogin px-${paddingwrap} py-${paddingwrapY}`}
             >
-              <form>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div
                   className={`col-centered input-group my-4 px-${inputmargins}`}
                 >
+                  
                   <input
                     type="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
                     className="form-control btn btn-secondary p-3"
                     id="bluefield"
                     placeholder="Email"
@@ -79,6 +97,7 @@ function RegisterPage() {
                 <div className="input-group my-4 px-2">
                   <button
                     type="submit"
+                    disabled={!isValid}
                     onClick={() => registerUser()}
                     className={`mt-4 btn w-${fieldwidths} col-centered p-3`}
                     id="bluefieldbtn"

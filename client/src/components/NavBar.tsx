@@ -4,6 +4,7 @@ import httpClient from "../httpClient";
 
 const NavBar = () => {
   const [user, setUser] = React.useState("");
+  isMobile = 
   React.useEffect(() => {
     (async () => {
       try {
@@ -20,6 +21,8 @@ const NavBar = () => {
     await httpClient.post("http://127.0.0.1:5000/logout");
     window.location.href = "/";
   };
+
+  console.log(user);
 
   return (
     <header className="header-default">

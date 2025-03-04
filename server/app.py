@@ -33,7 +33,7 @@ with app.app_context():
 
 server_session = Session(app)
 
-
+print(session)
 
 @app.route("/getSize", methods = ["GET"])
 def getSize():
