@@ -5,6 +5,8 @@ import DetectMobile from "./DetectMobile";
 
 const NavBar = () => {
   const [user, setUser] = React.useState("");
+  const isMobile = DetectMobile();
+
   React.useEffect(() => {
     (async () => {
       try {
@@ -61,7 +63,7 @@ const NavBar = () => {
                   <button
                     onClick={logoutUser}
                     className={`btn btn-outline-light ${
-                      DetectMobile() ? `my-2` : `mx-2`
+                      isMobile ? `my-2` : `mx-2`
                     }`}
                     type="button"
                   >
@@ -94,7 +96,7 @@ const NavBar = () => {
                 <Link to="/upload-project">
                   <button
                     className={`btn btn-outline-light me-2 ${
-                      DetectMobile() ? `mb-2` : ``
+                      isMobile ? `mb-2` : ``
                     } `}
                     type="button"
                   >
