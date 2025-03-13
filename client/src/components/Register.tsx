@@ -6,11 +6,12 @@ import ViewPass from "./ViewPass";
 function RegisterPage() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const fieldwidths = DetectMobile() ? 100 : 50;
-  const inputmargins = DetectMobile() ? 1 : 2;
-  const paddingwrap = DetectMobile() ? 3 : 5;
-  const paddingwrapY = DetectMobile() ? 1 : 3;
-  const columnsize = DetectMobile() ? 10 : 6;
+  const isMobile = DetectMobile();
+  const fieldwidths = isMobile ? 100 : 50;
+  const inputmargins = isMobile ? 1 : 2;
+  const paddingwrap = isMobile ? 3 : 5;
+  const paddingwrapY = isMobile ? 1 : 3;
+  const columnsize = isMobile ? 10 : 6;
 
   const registerUser = async () => {
     try {
@@ -28,8 +29,6 @@ function RegisterPage() {
       if (e.message == "Request failed with status code 409") {
         alert("This user already exists");
       }
-
-      
     }
   };
 

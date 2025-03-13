@@ -9,6 +9,9 @@ $font-family-base: "OpenSans";
 
 $FONTCOLOR: #4e4e4e;
 
+html {
+  overflow-x: hidden;
+}
 body {
   font-family: "OpenSans";
 }
