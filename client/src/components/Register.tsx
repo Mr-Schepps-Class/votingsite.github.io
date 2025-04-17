@@ -6,6 +6,8 @@ import ViewPass from "./ViewPass";
 function RegisterPage() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [isValid, setIsValid] = React.useState(true);
+  const isMobile = DetectMobile();
   const fieldwidths = DetectMobile() ? 100 : 50;
   const inputmargins = DetectMobile() ? 1 : 2;
   const paddingwrap = DetectMobile() ? 3 : 5;
