@@ -24,6 +24,7 @@ function LoginPage() {
       //console.log(e.message);
 
       //kinda hacky solution here
+      console.log(e.message)
       if (e.message == "Request failed with status code 401") {
         alert("Invalid Credentials");
       }

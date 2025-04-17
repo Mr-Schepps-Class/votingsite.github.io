@@ -47,7 +47,6 @@ function RegisterPage() {
 
   const handleSubmit = (e : any) => {
     e.preventDefault();
-    alert('Email submitted: ' + email);
   };
 
   return (
@@ -93,6 +92,10 @@ function RegisterPage() {
                     className="mx-2 "
                   ></input>
                 </b>
+
+                <p>{!isValid ? "Please Enter a valid email" : ""}</p>
+                
+                
 
                 <div className="input-group my-4 px-2">
                   <button

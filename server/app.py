@@ -33,8 +33,6 @@ with app.app_context():
 
 server_session = Session(app)
 
-print(session)
-
 @app.route("/getSize", methods = ["GET"])
 def getSize():
     print(db.session.query(Website).count())
@@ -145,6 +143,8 @@ def register_user():
     
     hshpass = bcrypt.generate_password_hash(password)
 
+    print(email, password)
+
     nuser = User(email = email, password =hshpass)
 
     db.session.add(nuser)
@@ -167,6 +167,8 @@ def login_user():
 
     if user is None:
         return jsonify({"error" : "Unathorized"}), 401
+    
+    print("FUCK", email, password, user.email)
 
     if not bcrypt.check_password_hash(user.password,password):
         return jsonify({"error": "Unauthorized"}), 401
