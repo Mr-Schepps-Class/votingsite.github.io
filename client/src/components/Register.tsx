@@ -6,7 +6,6 @@ import ViewPass from "./ViewPass";
 function RegisterPage() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [isValid, setIsValid] = React.useState(true);
   const fieldwidths = DetectMobile() ? 100 : 50;
   const inputmargins = DetectMobile() ? 1 : 2;
   const paddingwrap = DetectMobile() ? 3 : 5;
@@ -29,8 +28,6 @@ function RegisterPage() {
       if (e.message == "Request failed with status code 409") {
         alert("This user already exists");
       }
-
-      
     }
   };
 

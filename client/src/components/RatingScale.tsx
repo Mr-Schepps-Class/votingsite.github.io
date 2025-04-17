@@ -11,10 +11,11 @@ interface RatingScaleProps {
 
 const RatingScale = ({ siteURL, siteAuthor }: RatingScaleProps) => {
   const [sliderValue, setSliderValue] = useState(0.1);
-  const sliderOrientation = DetectMobile() ? "slidewrapm" : "slidewrap";
-  const rangeOrientation = DetectMobile() ? "votingRangem" : "votingRange";
-  const margEnd = DetectMobile() ? "me-5" : "";
-  const margT = DetectMobile() ? "mx-3" : "mt-3";
+  const isMobile = DetectMobile();
+  const sliderOrientation = isMobile ? "slidewrapm" : "slidewrap";
+  const rangeOrientation = isMobile ? "votingRangem" : "votingRange";
+  const margEnd = isMobile ? "me-5" : "";
+  const margT = isMobile ? "mx-3" : "mt-3";
 
   const getVal = (event: any) => {
     document.documentElement.style.setProperty(
@@ -35,14 +36,14 @@ const RatingScale = ({ siteURL, siteAuthor }: RatingScaleProps) => {
         <p>{siteAuthor}</p>
       </div>
       <div className={`${margEnd} col-2`} id={sliderOrientation}>
-        {DetectMobile() ? (
+        {isMobile ? (
           <></>
         ) : (
           <h4 className="voteText">
             Average <br></br>Rating
           </h4>
         )}
-        {DetectMobile() ? (
+        {isMobile ? (
           <></>
         ) : (
           <AverageRating rating={97} extraclass={`rating-outer-circle my-3`} />
@@ -54,7 +55,7 @@ const RatingScale = ({ siteURL, siteAuthor }: RatingScaleProps) => {
           max="10"
           step="0.1"
           id={rangeOrientation}
-          className={DetectMobile() ? "ms-3" : ""}
+          className={isMobile ? "ms-3" : ""}
           value={sliderValue}
           onInput={getVal}
         />
