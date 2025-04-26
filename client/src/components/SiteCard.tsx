@@ -40,7 +40,7 @@ const SiteCard = ({ customId }: SiteCardProps) => {
     console.log(url);
 
     navigate("/website-preview", {
-      state: { link: url, author: name },
+      state: { link: url, title: name },
     });
   };
 
@@ -60,7 +60,10 @@ const SiteCard = ({ customId }: SiteCardProps) => {
             explore
           </a>
 
-          <img src={`http://127.0.0.1:5000/static/${userId}.png`}></img>
+          <img
+            className="smol-image my-3"
+            src={`http://127.0.0.1:5000/static/${userId}.png`}
+          ></img>
           <h5 className="card-title ">{name}</h5>
         </div>
       </div>

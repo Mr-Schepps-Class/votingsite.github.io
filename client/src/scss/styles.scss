@@ -364,5 +364,12 @@ $inputfieldblue: #c6dde6;
 
   cursor: pointer;
 }
+
+.smol-image {
+  width: 100%;
+  margin: auto;
+  padding: 7px;
+}
+
 $body-bg: #dae8ee;
 @import "bootstrap";

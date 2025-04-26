@@ -10,7 +10,7 @@ const DisplaySite = () => {
       {location.state.link != null ? (
         <RatingScale
           siteURL={location.state.link}
-          siteAuthor={location.state.author}
+          siteName={location.state.title}
         />
       ) : (
         <NotFound />

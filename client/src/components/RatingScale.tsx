@@ -6,10 +6,10 @@ let currentVal = 0;
 
 interface RatingScaleProps {
   siteURL: string;
-  siteAuthor: string;
+  siteName: string;
 }
 
-const RatingScale = ({ siteURL, siteAuthor }: RatingScaleProps) => {
+const RatingScale = ({ siteURL, siteName }: RatingScaleProps) => {
   const [sliderValue, setSliderValue] = useState(0.1);
   const isMobile = DetectMobile();
   const sliderOrientation = isMobile ? "slidewrapm" : "slidewrap";
@@ -30,10 +30,16 @@ const RatingScale = ({ siteURL, siteAuthor }: RatingScaleProps) => {
   };
 
   return (
-    <div className="row">
+    <div className="row m-4">
       <div className="col-10">
-        <iframe src={siteURL}></iframe>
-        <p>{siteAuthor}</p>
+        {isMobile ? (
+          <></>
+        ) : (
+          <>
+            <iframe width="90%" height="100%" src={siteURL}></iframe>
+            <p>{siteName}</p>
+          </>
+        )}
       </div>
       <div className={`${margEnd} col-2`} id={sliderOrientation}>
         {isMobile ? (
@@ -65,6 +71,21 @@ const RatingScale = ({ siteURL, siteAuthor }: RatingScaleProps) => {
             ? Number(sliderValue).toFixed(1)
             : Number(sliderValue)}
         </h1>
+      </div>
+      <div className="col-12 my-4">
+        {isMobile ? (
+          <>
+            <iframe
+              width="90%"
+              height="250%"
+              className="m-4"
+              src={siteURL}
+            ></iframe>
+            <p>{siteName}</p>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
