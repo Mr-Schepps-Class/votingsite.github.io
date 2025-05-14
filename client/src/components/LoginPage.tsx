@@ -45,7 +45,7 @@ function LoginPage() {
                   className={`col-centered input-group my-4 px-${inputmargins}`}
                 >
                   <input
-                    type="email"
+                    type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control btn btn-secondary p-3"
@@ -57,7 +57,7 @@ function LoginPage() {
                   className={`col-centered input-group my-4 px-${inputmargins}`}
                 >
                   <input
-                    type="password"
+                    type="text"
                     placeholder="Password"
                     className="form-control btn btn-secondary p-3"
                     id="bluefield2"

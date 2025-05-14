@@ -23,6 +23,8 @@ class Votes(db.Model):
     rating = db.Column(db.Integer, unique = False)
     userId = db.Column(db.Integer, db.ForeignKey("User.id"), nullable = False)
     websiteId = db.Column(db.Integer, db.ForeignKey("Website.id"), nullable = False)
+    
+    __table_args__ = (db.UniqueConstraint('userId', 'websiteId', name='unique_user_website'), )
 
 
 

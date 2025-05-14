@@ -11,6 +11,7 @@ from sqlalchemy import func
 from pyppeteer import launch
 import asyncio
 import base64
+import math
 
 
 
@@ -32,6 +33,36 @@ with app.app_context():
     db.create_all()
 
 server_session = Session(app)
+
+@app.route("/vote", methods = ["POST"])
+def vote():
+    value = request.json["Val"]
+    email = request.json['email']
+    url = request.json['url']
+
+    if("email" not in request.json):
+        return jsonify({"error": "Please Login"}), 400
+
+    user = User.query.filter_by(email = email).first()
+    site = Website.query.filter_by(url = url).first()
+
+    print(user.id, site.id)
+    vote = Votes.query.filter_by(userId=user.id, websiteId=site.id).first()
+
+
+
+
+    if vote:
+        vote.rating = value  # update existing vote
+    else:
+        vote = Votes(rating=value, userId=user.id, websiteId=site.id)
+        db.session.add(vote)
+
+    db.session.commit()
+
+    return jsonify({"message": "Voted"}), 200
+
+
 
 @app.route("/getSize", methods = ["GET"])
 def getSize():
@@ -56,7 +87,10 @@ def query():
     if(rating is None):
         rating = 0
     else:
-        rating *= 10
+        rating *= 100
+        rating = math.ceil(rating)
+        rating //= 10
+
 
     
     

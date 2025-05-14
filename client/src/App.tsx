@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import RegisterPage from "./components/Register";
 import NotFound from "./pages/NotFound";
 import DisplaySite from "./pages/DisplaySite";
+import TestLogin from "./pages/testLogin";
 
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
           <Route path="/upload-project" element={<Upload />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<TestLogin />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/website-preview" element={<DisplaySite />} />
+   
         </Routes>
       </main>
     </>

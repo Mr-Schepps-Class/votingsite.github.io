@@ -9,7 +9,7 @@ interface RatingScaleProps {
   siteName: string;
 }
 
-const RatingScale = ({ siteURL, siteName }: RatingScaleProps) => {
+const RatingScale = ({ siteURL, siteName, setVal}:any) => {
   const [sliderValue, setSliderValue] = useState(0.1);
   const isMobile = DetectMobile();
   const sliderOrientation = isMobile ? "slidewrapm" : "slidewrap";
@@ -27,6 +27,7 @@ const RatingScale = ({ siteURL, siteName }: RatingScaleProps) => {
       `hsl(${event.target.value * 10} 15% 40%)`
     );
     setSliderValue(event.target.value);
+    setVal(event.target.value);
   };
 
   return (
